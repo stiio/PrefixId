@@ -10,17 +10,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefixId", "src\PrefixId\PrefixId.csproj", "{2794FD5F-66D5-4A3F-A302-5EFD9EC22EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prefix.Id", "src\Prefix.Id\Prefix.Id.csproj", "{2794FD5F-66D5-4A3F-A302-5EFD9EC22EF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D2FD93F2-F39D-4963-8C75-BF7B95B2F691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefixId.EntityFramework", "src\PrefixId.EntityFramework\PrefixId.EntityFramework.csproj", "{5DCD30F9-0E3A-4F63-9298-842F6BB41C2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prefix.Id.EntityFramework", "src\Prefix.Id.EntityFramework\Prefix.Id.EntityFramework.csproj", "{5DCD30F9-0E3A-4F63-9298-842F6BB41C2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefixId.Dapper", "src\PrefixId.Dapper\PrefixId.Dapper.csproj", "{DE5D22D7-8A98-42DD-A11B-866AB3A1849D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prefix.Id.Dapper", "src\Prefix.Id.Dapper\Prefix.Id.Dapper.csproj", "{DE5D22D7-8A98-42DD-A11B-866AB3A1849D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B11438EE-F0D2-4904-AD97-C94689BE5B32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.PrefixId", "tests\Tests.PrefixId\Tests.PrefixId.csproj", "{0EDF7F24-26BD-4657-9610-AD3AC2E0CACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Prefix.Id", "tests\Tests.Prefix.Id\Tests.Prefix.Id.csproj", "{0EDF7F24-26BD-4657-9610-AD3AC2E0CACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
