@@ -2,7 +2,7 @@
 
 namespace Stio.Prefix.Id.Models;
 
-public abstract record PrefixId : IParsable<PrefixId>
+public abstract record PrefixId
 {
     private const string Separator = "_";
     private readonly string value;
@@ -30,20 +30,12 @@ public abstract record PrefixId : IParsable<PrefixId>
     protected abstract string Prefix { get; }
 
     /// <summary>
-    /// Need for correct binding.
+    /// Need for correct binding. Throw <c cref="NotImplementedException">NotImplementedException</c>.
     /// </summary>
-    /// <returns>throw NotImplementedException.</returns>
-    public static PrefixId Parse(string s, IFormatProvider? provider)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Need for correct binding.
-    /// </summary>
-    /// <returns>throw NotImplementedException.</returns>
+    /// <returns>throw <c cref="NotImplementedException">NotImplementedException</c></returns>
     public static bool TryParse(string? s, IFormatProvider? provider, out PrefixId result)
     {
+        // TODO: по хорошему убрать бы этот метод и заменить на какие-нибудь конвенции mvc, если это возможно
         throw new NotImplementedException();
     }
 }
