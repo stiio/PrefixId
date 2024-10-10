@@ -1,6 +1,8 @@
-﻿namespace Stio.Prefix.Id.Models;
+﻿using Stio.Prefix.Id.Exceptions;
 
-public abstract record PrefixId
+namespace Stio.Prefix.Id.Models;
+
+public abstract record PrefixId : IParsable<PrefixId>
 {
     private const string Separator = "_";
     private readonly string value;
@@ -18,7 +20,7 @@ public abstract record PrefixId
         {
             if (value.Split(Separator).FirstOrDefault() != this.Prefix)
             {
-                throw new Exception($"Id {value} has the wrong prefix. Expected: {this.Prefix}");
+                throw new InvalidPrefixIdException(value, this.Prefix);
             }
 
             this.value = value;
@@ -26,4 +28,22 @@ public abstract record PrefixId
     }
 
     protected abstract string Prefix { get; }
+
+    /// <summary>
+    /// Need for correct binding.
+    /// </summary>
+    /// <returns>throw NotImplementedException.</returns>
+    public static PrefixId Parse(string s, IFormatProvider? provider)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Need for correct binding.
+    /// </summary>
+    /// <returns>throw NotImplementedException.</returns>
+    public static bool TryParse(string? s, IFormatProvider? provider, out PrefixId result)
+    {
+        throw new NotImplementedException();
+    }
 }

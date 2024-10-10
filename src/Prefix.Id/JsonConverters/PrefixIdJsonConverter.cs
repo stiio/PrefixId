@@ -1,10 +1,12 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using Stio.Prefix.Id.Exceptions;
 using Stio.Prefix.Id.Models;
 
 namespace Stio.Prefix.Id.JsonConverters;
 
-internal class PrefixIdJsonConverter<TId> : JsonConverter<TId> where TId : PrefixId, new()
+public class PrefixIdJsonConverter<TId> : JsonConverter<TId>
+    where TId : PrefixId, new()
 {
     public override TId? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
@@ -14,8 +16,17 @@ internal class PrefixIdJsonConverter<TId> : JsonConverter<TId> where TId : Prefi
         }
 
         var value = JsonSerializer.Deserialize<string>(ref reader, options);
-        var id = new TId { Value = value! };
-        return id;
+
+        // TODO: Над тут че-то получше придумать
+        try
+        {
+            var id = new TId { Value = value! };
+            return id;
+        }
+        catch (InvalidPrefixIdException e)
+        {
+            throw new JsonException(e.Message, e);
+        }
     }
 
     public override void Write(Utf8JsonWriter writer, TId? value, JsonSerializerOptions options)

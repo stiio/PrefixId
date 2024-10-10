@@ -6,6 +6,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>Stio.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<NoWarn>1701;1702;SA0001;CS1591</NoWarn>
+		<Version>1.0.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(MSBuildProjectExtension)' != '.dcproj'">
@@ -13,6 +14,12 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+	</ItemGroup>
+
+
+	<ItemGroup Condition="'$(MSBuildProjectExtension)' != '.dcproj'">
+		<InternalsVisibleTo Include="Tests.Prefix.Id" />
+		<InternalsVisibleTo Include="DebugConsole" />
 	</ItemGroup>
 
 </Project>

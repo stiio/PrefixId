@@ -1,26 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="xunit" Version="2.5.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Prefix.Id.Dapper\Prefix.Id.Dapper.csproj" />
     <ProjectReference Include="..\..\src\Prefix.Id.EntityFramework\Prefix.Id.EntityFramework.csproj" />
     <ProjectReference Include="..\..\src\Prefix.Id.Swashbuckle\Prefix.Id.Swashbuckle.csproj" />
     <ProjectReference Include="..\..\src\Prefix.Id\Prefix.Id.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Include="Xunit" />
   </ItemGroup>
 
 </Project>

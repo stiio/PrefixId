@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Options\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Prefix.Id.Swashbuckle\Prefix.Id.Swashbuckle.csproj" />
+	  <ProjectReference Include="..\Prefix.Id\Prefix.Id.csproj" />
+	</ItemGroup>
+
+</Project>
