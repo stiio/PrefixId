@@ -65,7 +65,7 @@ public class DatabaseController : Controller
             new
             {
                 Id = book.Id,
-                Name = book.Name
+                Name = book.Name,
             });
 
         var bookGet = await this.dbContext.Database.GetDbConnection()

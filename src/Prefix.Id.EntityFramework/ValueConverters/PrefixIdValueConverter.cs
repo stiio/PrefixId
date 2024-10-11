@@ -3,7 +3,8 @@ using Stio.Prefix.Id.Models;
 
 namespace Stio.Prefix.Id.EntityFramework.ValueConverters;
 
-internal class PrefixIdValueConverter<T> : ValueConverter<T, string> where T : PrefixId, new()
+internal class PrefixIdValueConverter<T> : ValueConverter<T, string>
+    where T : PrefixId, new()
 {
     public PrefixIdValueConverter()
         : base(

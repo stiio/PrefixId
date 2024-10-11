@@ -15,7 +15,7 @@ namespace Stio.Sample.Data.Migrations
                 columns: table => new
                 {
                     id = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
-                    name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true)
+                    name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                 },
                 constraints: table =>
                 {
@@ -28,7 +28,7 @@ namespace Stio.Sample.Data.Migrations
                 {
                     id = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
                     book_id = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: true),
-                    text = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true)
+                    text = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                 },
                 constraints: table =>
                 {

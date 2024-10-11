@@ -9,8 +9,6 @@ public static class ConfigureServices
     public static IServiceCollection AddPrefixId(this IServiceCollection services)
     {
         services.ConfigureOptions<ConfigureSystemTextJsonOptions>();
-        services.ConfigureOptions<ConfigureMvcOptions>();
-
         services.AddPrefixIdSwashbuckle();
 
         return services;

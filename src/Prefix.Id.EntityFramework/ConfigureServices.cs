@@ -5,6 +5,7 @@ using Stio.Prefix.Id.EntityFramework.ValueConverters;
 using Stio.Prefix.Id.Models;
 
 namespace Stio.Prefix.Id.EntityFramework;
+
 public static class ConfigureServices
 {
     public static void ApplyTypedIdConversions(
@@ -32,12 +33,12 @@ public static class ConfigureServices
     {
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())
         {
-            foreach (var property in entityType.GetRuntimeProperties()
-                         .Where(x => x.Value.PropertyType.IsAssignableTo(typeof(PrefixId))))
+            foreach (var property in
+                     entityType.ClrType.GetProperties().Where(x => x.PropertyType.IsAssignableTo(typeof(PrefixId))))
             {
-                var converterType = typeof(PrefixIdValueConverter<>).MakeGenericType(property.Value.PropertyType);
+                var converterType = typeof(PrefixIdValueConverter<>).MakeGenericType(property.PropertyType);
                 modelBuilder.Entity(entityType.Name)
-                    .Property(property.Key)
+                    .Property(property.Name)
                     .HasConversion(converterType)
                     .HasMaxLength(40);
             }

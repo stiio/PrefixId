@@ -1,7 +1,10 @@
-﻿using Stio.Prefix.Id.Exceptions;
+﻿using System.ComponentModel;
+using Stio.Prefix.Id.Exceptions;
+using Stio.Prefix.Id.TypeConverters;
 
 namespace Stio.Prefix.Id.Models;
 
+[TypeConverter(typeof(PrefixIdTypeConverter))]
 public abstract record PrefixId
 {
     private const string Separator = "_";
@@ -28,14 +31,4 @@ public abstract record PrefixId
     }
 
     protected abstract string Prefix { get; }
-
-    /// <summary>
-    /// Need for correct binding. Throw <c cref="NotImplementedException">NotImplementedException</c>.
-    /// </summary>
-    /// <returns>throw <c cref="NotImplementedException">NotImplementedException</c></returns>
-    public static bool TryParse(string? s, IFormatProvider? provider, out PrefixId result)
-    {
-        // TODO: по хорошему убрать бы этот метод и заменить на какие-нибудь конвенции mvc, если это возможно
-        throw new NotImplementedException();
-    }
 }

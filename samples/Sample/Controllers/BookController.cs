@@ -41,8 +41,13 @@ public class BookController : Controller
     }
 
     [HttpGet("query")]
-    public Book QueryParameter(BookId id)
+    public Book? QueryParameter(BookId? id)
     {
+        if (id is null)
+        {
+            return null;
+        }
+
         return new Book()
         {
             Id = id,
