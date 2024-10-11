@@ -9,10 +9,16 @@ namespace Stio.Prefix.Id.Dapper.SqlMappers;
 
 internal class PrefixIdTypeHandler : SqlMapper.ITypeHandler
 {
-    public void SetValue(IDbDataParameter parameter, object value)
+    public void SetValue(IDbDataParameter parameter, object? value)
     {
-        var prefixId = value as PrefixId;
-        parameter.Value = prefixId?.Value;
+        if (value is PrefixId prefixId)
+        {
+            parameter.Value = prefixId.Value;
+        }
+        else
+        {
+            parameter.Value = DBNull.Value;
+        }
     }
 
     public object? Parse(Type destinationType, object value)

@@ -5,13 +5,13 @@ using Stio.Prefix.Id.Models;
 
 namespace Stio.Prefix.Id.Dapper;
 
-public static class ConfigureServices
+public static class PrefixIdDapper
 {
     public static void AddDapperTypeHandlers(params Assembly[] assemblies)
     {
         foreach (var assembly in assemblies)
         {
-            foreach (var type in assembly.GetTypes().Where(x => x.IsAssignableTo(typeof(PrefixId))))
+            foreach (var type in assembly.GetTypes().Where(x => x.IsAssignableTo(typeof(PrefixId)) && !x.IsAbstract))
             {
                 SqlMapper.AddTypeHandler(type, new PrefixIdTypeHandler());
             }

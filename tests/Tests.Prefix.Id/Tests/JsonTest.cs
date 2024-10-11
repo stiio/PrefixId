@@ -1,11 +1,19 @@
 ﻿using System.Text.Json;
 using Stio.Prefix.Id.JsonConverters;
 using Stio.Tests.Prefix.Id.Models;
+using Xunit.Abstractions;
 
 namespace Stio.Tests.Prefix.Id.Tests;
 
 public class JsonTest
 {
+    private readonly ITestOutputHelper testOutputHelper;
+
+    public JsonTest(ITestOutputHelper testOutputHelper)
+    {
+        this.testOutputHelper = testOutputHelper;
+    }
+
     [Fact]
     public void SerializeToJsonTest()
     {

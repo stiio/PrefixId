@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Stio.Prefix.Id.EntityFramework.ValueConverters;
 using Stio.Prefix.Id.Models;
 
@@ -10,17 +11,20 @@ public static class ConfigureServices
         this ModelConfigurationBuilder configurationBuilder,
         params Assembly[] assemblies)
     {
-        var assembly = Assembly.GetExecutingAssembly();
-        var typedIdTypes = assembly.GetTypes().Where(t =>
-            t is { IsClass: true, IsAbstract: false }
-            && t.IsSubclassOf(typeof(PrefixId)));
-
-        foreach (var type in typedIdTypes)
+        foreach (var assembly in assemblies)
         {
-            var converterType = typeof(PrefixIdValueConverter<>).MakeGenericType(type);
-            configurationBuilder
-                .Properties(type)
-                .HaveConversion(converterType);
+            var typedIdTypes = assembly.GetTypes().Where(t =>
+                t is { IsClass: true, IsAbstract: false }
+                && t.IsSubclassOf(typeof(PrefixId)));
+
+            foreach (var type in typedIdTypes)
+            {
+                var converterType = typeof(PrefixIdValueConverter<>).MakeGenericType(type);
+                configurationBuilder
+                    .Properties(type)
+                    .HaveConversion(converterType)
+                    .HaveMaxLength(40);
+            }
         }
     }
 
@@ -28,13 +32,14 @@ public static class ConfigureServices
     {
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())
         {
-            foreach (var property in entityType.GetDeclaredProperties()
-                         .Where(x => x.ClrType.IsAssignableTo(typeof(PrefixId))))
+            foreach (var property in entityType.GetRuntimeProperties()
+                         .Where(x => x.Value.PropertyType.IsAssignableTo(typeof(PrefixId))))
             {
-                var converterType = typeof(PrefixIdValueConverter<>).MakeGenericType(property.ClrType);
+                var converterType = typeof(PrefixIdValueConverter<>).MakeGenericType(property.Value.PropertyType);
                 modelBuilder.Entity(entityType.Name)
-                    .Property(property.Name)
-                    .HasConversion(converterType);
+                    .Property(property.Key)
+                    .HasConversion(converterType)
+                    .HasMaxLength(40);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Stio.Sample.Models;
+using Stio.Sample.Data.Models;
+using Stio.Sample.Data.ValueTypes;
 
 namespace Stio.Sample.Controllers;
 
@@ -8,15 +9,15 @@ namespace Stio.Sample.Controllers;
 public class BookController : Controller
 {
     [HttpGet]
-    public BookDto[] ListBook()
+    public Book[] ListBook()
     {
-        return new BookDto[]
+        return new Book[]
         {
-            new BookDto()
+            new Book()
             {
                 Name = "Book 1",
             },
-            new BookDto()
+            new Book()
             {
                 Name = "Book 2",
             },
@@ -24,15 +25,15 @@ public class BookController : Controller
     }
 
     [HttpPost]
-    public BookDto JsonBody(BookDto book)
+    public Book JsonBody(Book book)
     {
         return book;
     }
 
     [HttpGet("{id}")]
-    public BookDto RouteParameter(BookId id)
+    public Book RouteParameter(BookId id)
     {
-        return new BookDto()
+        return new Book()
         {
             Id = id,
             Name = "Book 1",
@@ -40,9 +41,9 @@ public class BookController : Controller
     }
 
     [HttpGet("query")]
-    public BookDto QueryParameter(BookId id)
+    public Book QueryParameter(BookId id)
     {
-        return new BookDto()
+        return new Book()
         {
             Id = id,
             Name = "Book 1",
@@ -50,9 +51,9 @@ public class BookController : Controller
     }
 
     [HttpPost("form_parameter")]
-    public BookDto FormParameter([FromForm] BookId id)
+    public Book FormParameter([FromForm] BookId id)
     {
-        return new BookDto()
+        return new Book()
         {
             Id = id,
             Name = "Book 1",
@@ -60,7 +61,7 @@ public class BookController : Controller
     }
 
     [HttpPost("form_model")]
-    public BookDto FormModel([FromForm] BookDto book)
+    public Book FormModel([FromForm] Book book)
     {
         return book;
     }
